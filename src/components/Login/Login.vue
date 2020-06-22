@@ -7,10 +7,10 @@
             <div class="card-body">
                 <br><br><br>
                 <h1>Entrar</h1>
-                <form action="">
-                    <input placeholder="Digite seu Email" type="text"><br><br>
-                    <input placeholder="Senha" type="text"><br><br>
-                    <button type="submit" class="btn btn-danger">Entrar</button>
+                <form method="GET" action="/">
+                    <input id="email" placeholder="Digite seu Email" type="text"><br><br>
+                    <input id="password" placeholder="Senha" type="password"><br><br>
+                    <button v-on:click='login()' type="submit" class="btn btn-danger">Entrar</button>
                 </form>
                 &nbsp;
                 <br><br>
@@ -22,10 +22,23 @@
 </template>
 
 <script>
+import gql from 'graphql-tag'
+
 export default {
     name: "App",
-    data(){
-        return
+    methods: {
+        login(){
+            let email = document.getElementById("email").value
+            let password = document.getElementById("password").value
+            this.$api.query({
+                query: gql`{ login(data: {
+                    email: "${email}"
+                    password: "${password}"
+                }){ name email token } }`
+            }).then(result => {
+                localStorage.setItem('token', result.data.login.token)
+            })
+        }
     }
 }
 </script>
