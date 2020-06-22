@@ -4,7 +4,6 @@ import VueRouter from "vue-router"
 import Login from './components/Login/Login.vue'
 import Index from './components/Index/Index.vue'
 import Dashboard from './components/Dashboard/Dashboard.vue'
-import './plugins/graphql'
 
 Vue.use(VueRouter)
 

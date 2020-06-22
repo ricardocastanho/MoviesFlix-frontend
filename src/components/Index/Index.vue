@@ -9,7 +9,7 @@
             <br><br><br>
             <h1>Milhares de filmes e séries.</h1>
             <h1>Diversão garantida.</h1>
-            <h5>Você vai adorar a Netflix! Mas, se não gostar, cancele</h5>
+            <h5>Você vai adorar a MoviesFlix! Mas, se não gostar, cancele</h5>
             <h5>nos primeiros 21 dias para receber o reembolso.</h5>
             <br>
             <form action="">
@@ -25,10 +25,3 @@
         </div>
     </div>
 </template>
-<script>
-export default {
-    data(){
-        return
-    }
-}
-</script>
