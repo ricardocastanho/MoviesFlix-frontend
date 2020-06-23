@@ -2,7 +2,7 @@
     <div>
         <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand btn " href="#"><h3 class="text-danger text-left">MoviesFlix</h3></a>
-        <a class="navbar-brand btn btn-sm btn-danger" href="/#/login"><h3 class="text-ligth text-right">Login</h3></a>
+        <a class="navbar-brand btn btn-sm btn-danger" href="/#/login">Login</a>
         </nav>
         <div class="card bg-dark text-center text-light">
         <div class="card-body">

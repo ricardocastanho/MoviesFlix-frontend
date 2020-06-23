@@ -12,6 +12,7 @@
                 <div id="alert" class="alert alert-danger col-3" role="alert" style="display: none">
                     {{ alert }}
                 </div>
+                <br>
                 <button v-on:click='login()' type="submit" class="btn btn-danger">Entrar</button>
                 &nbsp;
                 <br><br>
