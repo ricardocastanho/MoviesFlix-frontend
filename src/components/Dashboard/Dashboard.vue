@@ -12,17 +12,11 @@
           <h1>
             <b>{{ movie[0].name }}</b>
           </h1>
-          <h6
-            style="width: 500px;text-align: justify;text-justify: inter-word;"
-          >{{ movie[0].description }}</h6>
+          <h6 style="width: 500px;text-align: justify;text-justify: inter-word;">{{ movie[0].description }}</h6>
           <br />
-          <button class="btn btn-lg btn-dark">
-            <span class="fa fa-play"></span> Assistir
-          </button>
+          <button class="btn btn-lg btn-dark"><span class="fa fa-play"></span> Assistir</button>
           &nbsp;
-          <button class="btn btn-lg btn-dark">
-            <span class="fa fa-plus"></span> Lista
-          </button>
+          <button class="btn btn-lg btn-dark"><span class="fa fa-plus"></span> Lista</button>
         </div>
       </div>
 
@@ -31,14 +25,18 @@
           <div class="card-body text-left">
             <h5>
               <b>Mais assistidos da semana:</b>
+              <template>
+                <v-carousel>
+                  <v-carousel-item
+                    v-for="(m, i) in movie"
+                    :key="i"
+                    :src="m.name"
+                    reverse-transition="fade-transition"
+                    transition="fade-transition"
+                  ></v-carousel-item>
+                </v-carousel>
+              </template>
             </h5>
-            <div class="carousel-item">
-              <img url="./" alt="..." />
-              <div class="carousel-caption d-none d-md-block">
-                <h5>...</h5>
-                <p>...</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -47,53 +45,53 @@
 </template>
 
 <script>
-import axios from 'axios/dist/axios'
-import 'font-awesome/css/font-awesome.css'
+  import axios from 'axios/dist/axios'
+  import 'font-awesome/css/font-awesome.css'
 
-export default {
-  data() {
-    return {
-      movie: [
-        {
-          name: '',
-          description: '',
-        },
-      ],
-    }
-  },
-  methods: {
-    getMovies() {
-      axios({
-        url: 'http://localhost:7542',
-        method: 'post',
-        data: {
-          query: `{
+  export default {
+    data() {
+      return {
+        movie: [
+          {
+            name: '',
+            description: '',
+          },
+        ],
+      }
+    },
+    methods: {
+      getMovies() {
+        axios({
+          url: 'http://localhost:7542',
+          method: 'post',
+          data: {
+            query: `{
             movies{ name description }
           }`,
-        },
-        headers: {
-          authorization: localStorage.getItem('token'),
-        },
-      })
-        .then((resp) => {
-          if (resp.data.errors == undefined) {
-            this.movie = resp.data.data.movies
-          } else {
-            this.$router.push('/login')
-          }
+          },
+          headers: {
+            authorization: localStorage.getItem('token'),
+          },
         })
-        .catch((err) => {
-          console.log(err.data.errors)
-        })
+          .then((resp) => {
+            if (resp.data.errors == undefined) {
+              this.movie = resp.data.data.movies
+            } else {
+              this.$router.push('/login')
+            }
+          })
+          .catch((err) => {
+            console.log(err.data.errors)
+          })
+      },
+      logout() {
+        localStorage.removeItem('token')
+        this.$router.push('/login')
+      },
     },
-    logout() {
-      localStorage.removeItem('token')
-      this.$router.push('/login')
-    },
-  },
 
-  created() {
-    this.getMovies()
-  },
-}
+    created() {
+      this.getMovies()
+    },
+  }
 </script>
