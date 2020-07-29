@@ -18,7 +18,8 @@
             <div class="carousel-caption d-none d-md-block">
               <div class="card-body text-left holder">
                 <h1>
-                  <b>{{ movie[0].name }}</b>
+                  <b>{{ movie[0].name }}</b
+                  >&nbsp;<span class="badge bad badge-pill badge-danger">Top1</span>
                 </h1>
                 <h6 style="width: 500px;text-align: justify;text-justify: inter-word;">{{ movie[0].description }}</h6>
                 <br />
