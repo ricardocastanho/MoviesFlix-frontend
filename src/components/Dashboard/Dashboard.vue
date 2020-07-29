@@ -59,6 +59,13 @@
         <div class="card bg-dark">
           <div class="card-body text-left">
             <h5>Lançamentos:</h5>
+            <div class="row row-cols-2 row-cols-md-3">
+              <div class="col mb-4" v-for="(m, i) in movie" v-bind:key="i">
+                <div class="card bg-dark">
+                  <img src="../../../public/guardioes.jpg" class="card-img-top" alt="..." />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
