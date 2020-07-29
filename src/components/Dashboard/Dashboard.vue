@@ -30,13 +30,13 @@
             </div>
           </div>
           <div class="carousel-item">
-            <img src="../../../public/avengers.jpg" class="d-block w-100 img-fundo" alt="..." />
+            <img src="../../../public/guardioes.jpg" class="d-block w-100 img-fundo" alt="..." />
             <div class="carousel-caption d-none d-md-block">
               <div class="card-body text-left holder">
                 <h1>
-                  <b>{{ movie[0].name }}</b>
+                  <b>{{ movie[2].name }}</b>
                 </h1>
-                <h6 style="width: 500px;text-align: justify;text-justify: inter-word;">{{ movie[0].description }}</h6>
+                <h6 style="width: 500px;text-align: justify;text-justify: inter-word;">{{ movie[2].description }}</h6>
                 <br />
                 <button class="btn btn-lg btn-dark holder-btn"><span class="fa fa-play"></span> Assistir</button>
                 &nbsp;
