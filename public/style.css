@@ -2,10 +2,27 @@ body {
   background-color: #343a40;
 }
 .img-fundo {
-  background-image: url(./avengers.jpg);
+  max-height: 800px;
+  max-width: 1600px;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
-  opacity: 70%;
+  opacity: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 6em;
+}
+.holder {
+  justify-content: center;
+  align-items: center;
+}
+.holder img,
+.holder h1,
+h6 {
+  text-align: left;
+  margin-left: 5%;
+}
+.holder-btn {
+  margin-left: 5%;
 }

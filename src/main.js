@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Vuetify from 'vuetify'
+import vuetify from 'vuetify'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import Login from './components/Login/Login.vue'
@@ -8,7 +8,7 @@ import Dashboard from './components/Dashboard/Dashboard.vue'
 import 'vuetify/dist/vuetify.min.css'
 
 Vue.use(VueRouter)
-Vue.use(Vuetify)
+Vue.use(vuetify)
 
 const router = new VueRouter({
   routes: [
@@ -32,5 +32,6 @@ Vue.config.productionTip = false
 new Vue({
   mode: 'history',
   router,
+  vuetify,
   render: (h) => h(App),
 }).$mount('#app')
