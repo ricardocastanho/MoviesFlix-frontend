@@ -9,38 +9,25 @@
     <div class="card bg-dark text-center text-light">
       <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-          <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+          <li v-for="(m, i) in movie" v-bind:key="i" data-target="#carouselExampleCaptions" data-slide-to="i"></li>
         </ol>
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="../../../public/avengers.jpg" class="d-block w-100 img-fundo" alt="..." />
-            <div class="carousel-caption d-none d-md-block">
-              <div class="card-body text-left holder">
-                <h1>
-                  <b>{{ movie[0].name }}</b
-                  >&nbsp;<span class="badge bad badge-pill badge-danger">Top1</span>
-                </h1>
-                <h6 style="width: 500px;text-align: justify;text-justify: inter-word;">{{ movie[0].description }}</h6>
-                <br />
-                <button class="btn btn-lg btn-dark holder-btn"><span class="fa fa-play"></span> Assistir</button>
-                &nbsp;
-                <button class="btn btn-lg btn-dark"><span class="fa fa-plus"></span> Lista</button>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="../../../public/guardioes.jpg" class="d-block w-100 img-fundo" alt="..." />
-            <div class="carousel-caption d-none d-md-block">
-              <div class="card-body text-left holder">
-                <h1>
-                  <b>{{ movie[2].name }}</b>
-                </h1>
-                <h6 style="width: 500px;text-align: justify;text-justify: inter-word;">{{ movie[2].description }}</h6>
-                <br />
-                <button class="btn btn-lg btn-dark holder-btn"><span class="fa fa-play"></span> Assistir</button>
-                &nbsp;
-                <button class="btn btn-lg btn-dark"><span class="fa fa-plus"></span> Lista</button>
+          <div v-for="(m, i) of movie.length" v-bind:key="i">
+            <div class="carousel-item active" id="carousel-item">
+              <img :src="movie[i].image_path" class="d-block w-100 img-fundo" alt="..." />
+              <div class="carousel-caption d-none d-md-block">
+                <div class="card-body text-left holder">
+                  <h1>
+                    <b>{{ movie[i].name }}</b
+                    >&nbsp;
+                    <span class="badge bad badge-pill badge-danger">Top {{ i + 1 }}</span>
+                  </h1>
+                  <h6 style="width: 500px;text-align: justify;text-justify: inter-word;">{{ movie[i].description }}</h6>
+                  <br />
+                  <button class="btn btn-lg btn-dark holder-btn"><span class="fa fa-play"></span> Assistir</button>
+                  &nbsp;
+                  <button class="btn btn-lg btn-dark"><span class="fa fa-plus"></span> Lista</button>
+                </div>
               </div>
             </div>
           </div>
@@ -62,7 +49,7 @@
             <div class="row row-cols-2 row-cols-md-3">
               <div class="col mb-4" v-for="(m, i) in movie" v-bind:key="i">
                 <div class="card bg-dark">
-                  <img src="../../../public/guardioes.jpg" class="card-img-top" alt="..." />
+                  <img src="" class="card-img-top" alt="..." />
                 </div>
               </div>
             </div>
@@ -84,9 +71,9 @@
           {
             name: '',
             description: '',
+            image_path: '',
           },
         ],
-        abc: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
       }
     },
     methods: {
@@ -96,7 +83,7 @@
           method: 'post',
           data: {
             query: `{
-            movies{ name description }
+            movies{ name description image_path}
           }`,
           },
           headers: {
